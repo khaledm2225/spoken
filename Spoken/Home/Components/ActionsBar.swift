@@ -12,6 +12,7 @@ struct ActionsBar: View {
     let onSave: () -> Void
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.dynamicTypeSize) private var typeSize
     @ScaledMetric(relativeTo: .body) private var iconSize: CGFloat = 20
 
     var body: some View {
@@ -26,8 +27,9 @@ struct ActionsBar: View {
             .disabled(!canUndo)
             .frame(maxWidth: .infinity)
 
+            // The middle keeps its natural width so its name is never squeezed;
+            // the two icons share whatever is left on either side.
             speak
-                .frame(maxWidth: .infinity)
 
             action(
                 isSaved ? "heart.fill" : "heart",
@@ -47,14 +49,16 @@ struct ActionsBar: View {
     /// to the icon alone rather than being squeezed out of sight.
     private var speak: some View {
         Button(action: onSpeak) {
-            ViewThatFits(in: .horizontal) {
-                HStack(spacing: Space.xs) {
-                    speakIcon
+            HStack(spacing: Space.xs) {
+                speakIcon
+                // The name is in the design and stays at normal sizes. At
+                // accessibility sizes it will not fit beside two other buttons,
+                // so the icon carries it alone; VoiceOver still reads the label.
+                if !typeSize.isAccessibilitySize {
                     Text("Speak")
                         .uiText(17, .medium)
-                        .lineLimit(1)
+                        .fixedSize()
                 }
-                speakIcon
             }
             .foregroundStyle(Palette.ink)
         }
