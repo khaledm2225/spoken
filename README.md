@@ -34,11 +34,19 @@ interface is drawn in code, with no image assets in the bundle.
 
 ## Personal touch
 
-- **Undo** recovers a mistapped swipe, the most common complaint in the original app's App Store
-  reviews. It restores the card, rolls the day's count back and taps lightly to confirm.
-- **The onboarding choices visibly shape the content.** Example sentences are drawn from the
-  interests picked on screen three and tagged on every card, so a learner who chose Football reads
-  "The brave player stayed calm." under `from your pick: Football`.
+**A swipe you can take back.** A light, accidental drag should not count as a real answer, but on a
+card stack it usually does: the word slides away and the learning moment is gone with it. Two things
+fix that, and both are here. The commit threshold is firm, a third of the card's width, and a light
+haptic fires the moment the drag crosses it, while the thumb is still down, so you learn where the
+line is before you let go. Anything short of it springs back. And when one does get away, Undo
+restores the card and rolls the day's count back with it.
+
+**Onboarding answers that visibly change the content.** Onboarding that asks several questions and
+then shows everyone the same words reads as friction rather than personalisation, because nothing
+proves the answers landed. The proof here is the examples. Every sentence on a card is drawn from an
+interest you picked, and carries a small tag naming it, so a learner who chose Football reads
+"The brave player stayed calm." under `from your pick: Football` — the answer given two screens
+earlier, visible in the thing being read now.
 
 ## Accessibility
 
