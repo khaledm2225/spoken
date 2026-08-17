@@ -43,10 +43,20 @@ extension View {
     }
 
     /// Content surfaces: level cards, interest chips, goal cards, word cards.
-    func surfaceCard(cornerRadius: CGFloat = Radius.card) -> some View {
+    ///
+    /// No material here, per the glass rule. Sampling the mockups shows these
+    /// surfaces are barely tinted, about a fifteen percent wash of the surface
+    /// colour, and that what actually draws the shape is a near white edge
+    /// rather than a dark hairline. Selecting one swaps that edge for the accent.
+    func surfaceCard(cornerRadius: CGFloat = Radius.card, isSelected: Bool = false) -> some View {
         let shape = Radius.shape(cornerRadius)
-        return background(Palette.surface, in: shape)
-            .overlay(shape.strokeBorder(Palette.hairline, lineWidth: 1))
+        return background(Palette.surface.opacity(0.15), in: shape)
+            .overlay(
+                shape.strokeBorder(
+                    isSelected ? Palette.accent : Palette.surface.opacity(0.80),
+                    lineWidth: isSelected ? 1.5 : 1
+                )
+            )
     }
 }
 

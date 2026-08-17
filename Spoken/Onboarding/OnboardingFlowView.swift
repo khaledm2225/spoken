@@ -22,8 +22,10 @@ struct OnboardingFlowView: View {
             switch model.step {
             case .welcome:
                 WelcomeScreen()
-            case .level, .interests, .dailyGoal:
-                // Built in steps 5 to 7.
+            case .level:
+                LevelScreen(selection: $model.level)
+            case .interests, .dailyGoal:
+                // Built in steps 6 and 7.
                 Color.clear
             }
         }
