@@ -4,8 +4,7 @@ import SwiftUI
 /// Step 4 replaces the body with the onboarding / home switch.
 struct RootView: View {
     var body: some View {
-        Color.white
-            .ignoresSafeArea()
+        AmbientBackground()
     }
 }
 
