@@ -26,14 +26,14 @@ extension View {
         AmbientBackground()
         VStack(spacing: Space.l) {
             Text("Floating glass")
-                .font(TypeScale.ui(17, .semibold))
+                .uiText(17, .semibold)
                 .foregroundStyle(Palette.ink)
                 .padding(Space.l)
                 .frame(maxWidth: .infinity)
                 .floatingGlass()
 
             Text("Content surface")
-                .font(TypeScale.ui(17, .semibold))
+                .uiText(17, .semibold)
                 .foregroundStyle(Palette.ink)
                 .padding(Space.l)
                 .frame(maxWidth: .infinity)
