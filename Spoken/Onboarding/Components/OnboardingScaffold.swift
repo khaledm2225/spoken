@@ -1,7 +1,7 @@
 import SwiftUI
 
-/// The shared frame every onboarding screen sits in: the title, the header row,
-/// the scrolling content and the button.
+/// The shared frame every onboarding screen sits in: the header row, the
+/// scrolling content and the button.
 ///
 /// The button is drawn here and nowhere else, which is what makes it the same
 /// size in the same place on all four screens. It is a sibling of the scroll
@@ -19,14 +19,8 @@ struct OnboardingScaffold<Content: View>: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: Space.l) {
-            VStack(alignment: .leading, spacing: Space.xl) {
-                Text("Spoken")
-                    .uiText(17, .bold)
-                    .foregroundStyle(Palette.ink)
-                    .frame(maxWidth: .infinity)
-
-                header
-            }
+            header
+                .padding(.top, Space.s)
 
             ScrollView {
                 content
