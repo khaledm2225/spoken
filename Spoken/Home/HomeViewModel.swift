@@ -22,8 +22,14 @@ final class HomeViewModel {
     let goal: DailyGoal
     private let interests: [Interest]
 
-    /// Every swipe so far, newest last. Step 9's undo reads from here.
+    /// Every swipe so far, newest last. Undo reads from here.
     private(set) var history: [Swipe] = []
+
+    /// Words kept with the heart, by id. Held for this session: no screen in the
+    /// design lists them, so nothing is written to storage.
+    private(set) var saved: Set<String> = []
+
+    var canUndo: Bool { index > 0 }
 
     init(loader: WordsLoader, settings: SettingsStore) {
         goal = settings.dailyGoal ?? .default
@@ -71,5 +77,26 @@ final class HomeViewModel {
         index += 1
         done += 1
         history.append(swipe)
+    }
+
+    /// Puts the last swiped card back on top and takes the day's count with it.
+    func undo() {
+        guard canUndo else { return }
+        index -= 1
+        done = max(0, done - 1)
+        if !history.isEmpty { history.removeLast() }
+    }
+
+    /// The card currently on top, if there is one.
+    var topWord: Word? { remaining.first }
+
+    func isSaved(_ word: Word) -> Bool { saved.contains(word.id) }
+
+    func toggleSaved(_ word: Word) {
+        if saved.contains(word.id) {
+            saved.remove(word.id)
+        } else {
+            saved.insert(word.id)
+        }
     }
 }
