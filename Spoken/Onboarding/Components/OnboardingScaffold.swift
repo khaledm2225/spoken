@@ -64,6 +64,8 @@ struct OnboardingScaffold<Content: View>: View {
             }
             .foregroundStyle(Palette.ink)
         }
+        .accessibilityLabel("Back")
+        .accessibilityAddTraits(.isButton)
     }
 
     @ViewBuilder private var skipButton: some View {
@@ -71,6 +73,8 @@ struct OnboardingScaffold<Content: View>: View {
             Button("Skip", action: onSkip)
                 .uiText(17)
                 .foregroundStyle(Palette.muted)
+                .accessibilityLabel("Skip this step")
+                .accessibilityAddTraits(.isButton)
         }
     }
 }

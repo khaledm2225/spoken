@@ -42,19 +42,30 @@ struct ActionsBar: View {
         .floatingGlass(cornerRadius: .infinity)
     }
 
-    /// The middle action carries its name, as the mockup has it.
+    /// The middle action carries its name, as the mockup has it. At the largest
+    /// type sizes the name no longer fits beside two other buttons, so it drops
+    /// to the icon alone rather than being squeezed out of sight.
     private var speak: some View {
         Button(action: onSpeak) {
-            HStack(spacing: Space.xs) {
-                Image(systemName: "speaker.wave.2")
-                    .font(.system(size: iconSize, weight: .medium))
-                Text("Speak")
-                    .uiText(17, .medium)
+            ViewThatFits(in: .horizontal) {
+                HStack(spacing: Space.xs) {
+                    speakIcon
+                    Text("Speak")
+                        .uiText(17, .medium)
+                        .lineLimit(1)
+                }
+                speakIcon
             }
             .foregroundStyle(Palette.ink)
         }
         .buttonStyle(.pressable)
         .accessibilityLabel("Speak the word")
+        .accessibilityAddTraits(.isButton)
+    }
+
+    private var speakIcon: some View {
+        Image(systemName: "speaker.wave.2")
+            .font(.system(size: iconSize, weight: .medium))
     }
 
     private func action(
@@ -71,6 +82,7 @@ struct ActionsBar: View {
         }
         .buttonStyle(.pressable)
         .accessibilityLabel(label)
+        .accessibilityAddTraits(.isButton)
     }
 }
 

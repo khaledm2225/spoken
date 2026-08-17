@@ -17,6 +17,8 @@ struct PrimaryButton: View {
                 .background(Palette.accent.opacity(isEnabled ? 1 : 0.35), in: Capsule())
         }
         .disabled(!isEnabled)
+        .accessibilityLabel(title)
+        .accessibilityAddTraits(.isButton)
     }
 }
 

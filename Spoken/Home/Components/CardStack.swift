@@ -40,12 +40,16 @@ struct CardStack: View {
 
             if let leaving {
                 WordCard(word: leaving.word, example: model.example(for: leaving.word))
-                    .aspectRatio(0.89, contentMode: .fit)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .offset(leaving.offset)
                     .rotationEffect(.degrees(leaving.offset.width * tiltPerPoint))
                     .allowsHitTesting(false)
             }
         }
+        // The cards behind sit on offsets, which do not grow the stack. This
+        // reserves the room they rise into, so on a short screen the deck stops
+        // painting over the progress row above it.
+        .padding(.top, peek * CGFloat(depthScales.count - 1))
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         // Reads the deck's width so the commit threshold can be a share of the
         // card rather than a hard coded distance. This measures for the gesture
@@ -76,7 +80,10 @@ struct CardStack: View {
                 Color.clear.cardSurface()
             }
         }
-        .aspectRatio(0.89, contentMode: .fit)
+        // Fills the space the deck was given rather than holding a fixed ratio.
+        // A ratio looks right when there is room, but on a short screen at large
+        // type it makes the card a narrow strip and the word inside truncates.
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .scaleEffect(depthScales[min(depth, depthScales.count - 1)])
         .opacity(depthOpacities[min(depth, depthOpacities.count - 1)])
         .offset(y: -peek * CGFloat(depth))
@@ -85,7 +92,7 @@ struct CardStack: View {
         .allowsHitTesting(isTop)
         .gesture(isTop ? dragGesture : nil)
         .accessibilityAddTraits(.isButton)
-        .accessibilityAction(named: "Skip") { advance(.skip) }
+        .accessibilityAction(named: "Skip word") { advance(.skip) }
         .accessibilityAction(named: "I know it") { advance(.knowIt) }
     }
 

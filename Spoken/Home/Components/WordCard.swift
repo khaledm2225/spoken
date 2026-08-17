@@ -33,6 +33,11 @@ struct WordCard: View {
             Text(word.text)
                 .wordText(56, .regular)
                 .foregroundStyle(Palette.ink)
+                // A single word has nowhere to wrap, so at the largest type
+                // sizes it is allowed to shrink a fifth to stay inside the card.
+                // It is still by far the biggest thing on screen.
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
 
             HStack(spacing: Space.xs) {
                 Text(word.pronunciation.uppercased())
@@ -71,9 +76,9 @@ struct WordCard: View {
 
     /// One card, one VoiceOver element, read in the order a learner would read it.
     private var voiceOverLabel: String {
-        var parts = [word.text, word.partOfSpeech, word.meaning]
-        if let example { parts.append(example.sentence) }
-        return parts.joined(separator: ", ")
+        var sentence = "\(word.text). \(word.partOfSpeech). \(word.meaning)."
+        if let example { sentence += " Example: \(example.sentence)" }
+        return sentence
     }
 }
 
@@ -101,7 +106,6 @@ extension View {
             ),
             example: ("The brave player stayed calm.", .football)
         )
-        .aspectRatio(0.89, contentMode: .fit)
         .padding(Space.xl)
     }
 }
