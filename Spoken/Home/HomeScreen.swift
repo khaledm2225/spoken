@@ -1,22 +1,22 @@
 import SwiftUI
 
-/// Where the learner lands once onboarding is done.
+/// Where the learner lands once onboarding is done: today's progress and the
+/// deck of words to work through.
 ///
-/// This step brings up the frame and the progress row, both driven by the goal
-/// saved during onboarding. Step 8 adds the swipeable card stack in the space
-/// below, and step 9 the floating actions bar.
+/// Step 9 adds the floating actions bar below the deck.
 struct HomeScreen: View {
-    let settings: SettingsStore
+    @State private var model: HomeViewModel
 
-    private var goal: DailyGoal { settings.dailyGoal ?? .default }
+    init(settings: SettingsStore, loader: WordsLoader = BundledWordsLoader()) {
+        _model = State(initialValue: HomeViewModel(loader: loader, settings: settings))
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: Space.l) {
-            ProgressRow(learned: 0, goal: goal)
+            ProgressRow(learned: model.learned, goal: model.goal)
                 .reveal(index: 0)
 
-            Color.clear
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            deck
         }
         .padding(.horizontal, Space.xl)
         .padding(.top, Space.l)
@@ -24,6 +24,27 @@ struct HomeScreen: View {
         .background {
             AmbientBackground()
         }
+    }
+
+    @ViewBuilder private var deck: some View {
+        if model.loadFailed {
+            message("The words could not be loaded.")
+        } else if model.isFinished {
+            message("That is every word for now. Well done.")
+        } else {
+            CardStack(model: model) { swipe in
+                model.commit(swipe)
+            }
+            .reveal(index: 1)
+        }
+    }
+
+    private func message(_ text: String) -> some View {
+        Text(text)
+            .uiText(17)
+            .foregroundStyle(Palette.muted)
+            .multilineTextAlignment(.center)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 

@@ -26,6 +26,13 @@ enum Motion {
     /// only ever be caught out of the corner of the eye.
     static let drift = Animation.easeInOut(duration: 4.5)
 
+    /// A card carrying on off the screen after the finger lets go. Eases out,
+    /// so it keeps the speed it was thrown with and then leaves.
+    static let flyOff = Animation.easeOut(duration: 0.26)
+
+    /// A card returning to the middle of the deck when the swipe was too small.
+    static let settle = Animation.smooth(duration: 0.34)
+
     /// The pause between one element arriving and the next. Small enough to
     /// feel like one movement rather than a queue of them.
     static let beat: Double = 0.04
