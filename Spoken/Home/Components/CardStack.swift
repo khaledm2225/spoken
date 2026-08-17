@@ -135,12 +135,12 @@ struct CardStack: View {
         }
     }
 
-    /// Moves the deck on with animation switched off, so the next card is simply
-    /// there rather than fading in behind the one leaving.
+    /// Moves the deck on, letting the cards behind glide forward into their new
+    /// places: each one grows a little, comes down a little and firms up as it
+    /// takes over. The card that was on top is drawn separately by then, so this
+    /// animation cannot make the incoming word fade in.
     private func advance(_ swipe: HomeViewModel.Swipe) {
-        var instant = Transaction()
-        instant.disablesAnimations = true
-        withTransaction(instant) {
+        withAnimation(reduceMotion ? Motion.crossfade : Motion.settle) {
             onSwipe(swipe)
             drag = .zero
             isPastThreshold = false

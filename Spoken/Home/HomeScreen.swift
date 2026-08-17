@@ -13,7 +13,7 @@ struct HomeScreen: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: Space.l) {
-            ProgressRow(learned: model.learned, goal: model.goal)
+            ProgressRow(done: model.done, goal: model.goal)
                 .reveal(index: 0)
 
             deck

@@ -2,7 +2,7 @@ import SwiftUI
 
 /// How far through today's goal the learner is: a label, a count and a thin bar.
 struct ProgressRow: View {
-    let learned: Int
+    let done: Int
     let goal: DailyGoal
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -12,7 +12,7 @@ struct ProgressRow: View {
 
     private var fraction: Double {
         guard goal.wordCount > 0 else { return 0 }
-        return min(1, Double(learned) / Double(goal.wordCount))
+        return min(1, Double(done) / Double(goal.wordCount))
     }
 
     var body: some View {
@@ -32,7 +32,7 @@ struct ProgressRow: View {
         }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("Today")
-        .accessibilityValue("\(learned) of \(goal.wordCount) words")
+        .accessibilityValue("\(done) of \(goal.wordCount) words")
     }
 
     private var todayLabel: some View {
@@ -42,7 +42,7 @@ struct ProgressRow: View {
     }
 
     private var countLabel: some View {
-        Text("\(learned) of \(goal.wordCount) words")
+        Text("\(done) of \(goal.wordCount) words")
             .uiText(15)
             .foregroundStyle(Palette.muted)
     }
@@ -81,9 +81,9 @@ private struct GeometryFreeFill: View {
     ZStack {
         AmbientBackground()
         VStack(spacing: Space.xl) {
-            ProgressRow(learned: 0, goal: .five)
-            ProgressRow(learned: 2, goal: .five)
-            ProgressRow(learned: 5, goal: .five)
+            ProgressRow(done: 0, goal: .five)
+            ProgressRow(done: 2, goal: .five)
+            ProgressRow(done: 5, goal: .five)
         }
         .padding(Space.xl)
     }

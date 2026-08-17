@@ -15,7 +15,8 @@ final class HomeViewModel {
 
     private(set) var words: [Word] = []
     private(set) var index = 0
-    private(set) var learned = 0
+    /// Cards dealt with today. Both a skip and an "I know it" move the day on.
+    private(set) var done = 0
     private(set) var loadFailed = false
 
     let goal: DailyGoal
@@ -35,7 +36,9 @@ final class HomeViewModel {
             let all = try loader.loadWords()
             let level = settings.level
             let matching = all.filter { level == nil || $0.level == level }
-            words = matching.isEmpty ? all : matching
+            // Today's deck is exactly the daily goal. Without this the learner
+            // can pass their own target and the progress row reads "6 of 5".
+            words = Array((matching.isEmpty ? all : matching).prefix(goal.wordCount))
         } catch {
             loadFailed = true
         }
@@ -66,7 +69,7 @@ final class HomeViewModel {
     func commit(_ swipe: Swipe) {
         guard !isFinished else { return }
         index += 1
+        done += 1
         history.append(swipe)
-        if swipe == .knowIt { learned += 1 }
     }
 }
