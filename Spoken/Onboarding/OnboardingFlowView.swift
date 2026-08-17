@@ -7,20 +7,24 @@ import SwiftUI
 /// The swap itself is animated: the new screen slides in from the side the
 /// learner is heading towards, and the old one slides out the other way.
 struct OnboardingFlowView: View {
+    /// Called once the learner finishes the last screen and the choices are saved.
+    private let onFinished: () -> Void
+
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var model: OnboardingViewModel
     @State private var isMovingForward = true
     @State private var isLeaving = false
 
-    init(settings: SettingsStore) {
+    init(settings: SettingsStore, onFinished: @escaping () -> Void = {}) {
         _model = State(initialValue: OnboardingViewModel(settings: settings))
+        self.onFinished = onFinished
     }
 
     var body: some View {
         OnboardingScaffold(
             step: model.step,
             isButtonEnabled: model.canAdvance,
-            onButtonTap: { move(forward: true) { model.advance() } },
+            onButtonTap: finishOrAdvance,
             onSkip: { move(forward: true) { model.skip() } },
             onBack: { move(forward: false) { model.goBack() } }
         ) {
@@ -50,8 +54,7 @@ struct OnboardingFlowView: View {
         case .interests:
             InterestsScreen(selection: $model.interests)
         case .dailyGoal:
-            // Built in step 7.
-            Color.clear
+            DailyGoalScreen(selection: $model.dailyGoal)
         }
     }
 
@@ -68,6 +71,17 @@ struct OnboardingFlowView: View {
             insertion: .move(edge: isMovingForward ? .trailing : .leading),
             removal: .scale(scale: 0.94).combined(with: .opacity)
         )
+    }
+
+    /// The last screen commits instead of moving on. Saving is the view model's
+    /// job; deciding what to show next is this view's.
+    private func finishOrAdvance() {
+        if model.isOnLastStep {
+            model.finish()
+            onFinished()
+        } else {
+            move(forward: true) { model.advance() }
+        }
     }
 
     /// Records the direction and tells the current screen it is leaving first,

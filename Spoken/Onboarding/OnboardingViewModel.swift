@@ -30,9 +30,22 @@ final class OnboardingViewModel {
         }
     }
 
+    /// Whether the current step is the last one, and so commits rather than
+    /// moves on.
+    var isOnLastStep: Bool { step.next == nil }
+
     func advance() {
         guard canAdvance, let next = step.next else { return }
         step = next
+    }
+
+    /// Writes everything the learner chose. Called when the last screen's
+    /// button is tapped; the view decides what to show next.
+    func finish() {
+        settings.level = level
+        settings.interests = interests
+        settings.dailyGoal = dailyGoal
+        settings.hasFinishedOnboarding = true
     }
 
     /// Skip moves past the current screen without recording a choice.
