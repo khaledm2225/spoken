@@ -56,7 +56,6 @@ struct GoalCard: View {
     /// Always laid out, only visible when chosen.
     private var badge: some View {
         SelectionBadge()
-            .scaleEffect(isSelected ? 1 : 0.6)
             .opacity(isSelected ? 1 : 0)
     }
 }

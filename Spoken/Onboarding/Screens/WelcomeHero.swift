@@ -28,10 +28,10 @@ struct WelcomeHero: View {
     /// The chips all lean the same way, only slightly, with the top left one
     /// leaning most.
     private static let chips = [
-        Chip(text: "happy", place: CGSize(width: -111, height: -125), tilt: -4, drift: 5, delay: 0.10),
-        Chip(text: "begin", place: CGSize(width: 111, height: -99), tilt: -1, drift: -6, delay: 0.18),
-        Chip(text: "brave", place: CGSize(width: -117, height: 108), tilt: -1, drift: 6, delay: 0.26),
-        Chip(text: "quiet", place: CGSize(width: 93, height: 129), tilt: -1, drift: -5, delay: 0.34)
+        Chip(text: "happy", place: CGSize(width: -111, height: -125), tilt: -4, drift: 3, delay: 0.10),
+        Chip(text: "begin", place: CGSize(width: 111, height: -99), tilt: -1, drift: -3, delay: 0.18),
+        Chip(text: "brave", place: CGSize(width: -117, height: 108), tilt: -1, drift: 3, delay: 0.26),
+        Chip(text: "quiet", place: CGSize(width: 93, height: 129), tilt: -1, drift: -3, delay: 0.34)
     ]
 
     var body: some View {
@@ -67,7 +67,7 @@ struct WelcomeHero: View {
         .padding(.horizontal, Space.xxl)
         .padding(.vertical, Space.xxl + Space.xs)
         .floatingGlass(style: .card)
-        .drifting(by: 4, delay: 0, appeared: hasAppeared, isStill: reduceMotion || !isDrifting)
+        .drifting(by: 2, delay: 0, appeared: hasAppeared, isStill: reduceMotion || !isDrifting)
     }
 
     private func chipView(_ chip: Chip) -> some View {

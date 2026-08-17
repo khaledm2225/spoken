@@ -32,7 +32,7 @@ struct SelectableCard<Detail: View>: View {
 
                     if isSelected {
                         SelectionBadge()
-                            .transition(reduceMotion ? .opacity : .scale(scale: 0.7).combined(with: .opacity))
+                            .transition(.opacity)
                     }
                 }
 

@@ -19,7 +19,7 @@ struct RootView: View {
         ZStack {
             if hasFinishedOnboarding {
                 HomeScreen(settings: settings)
-                    .transition(reduceMotion ? .opacity : .opacity.combined(with: .scale(scale: 1.03)))
+                    .transition(.opacity)
             } else {
                 OnboardingFlowView(settings: settings) {
                     withAnimation(Motion.push(reduceMotion: reduceMotion)) {

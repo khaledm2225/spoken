@@ -19,7 +19,7 @@ struct InterestChip: View {
                 if isSelected {
                     Image(systemName: "checkmark")
                         .font(.system(size: tickSize, weight: .bold))
-                        .transition(reduceMotion ? .opacity : .scale(scale: 0.6).combined(with: .opacity))
+                        .transition(.opacity)
                 }
 
                 Text(interest.title)

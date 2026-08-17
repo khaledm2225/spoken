@@ -58,18 +58,22 @@ struct OnboardingFlowView: View {
         }
     }
 
-    /// The incoming screen slides in over the one leaving, which stays put and
-    /// settles back a little as it fades. Sliding both the same distance reads
-    /// as a shove; letting the old one hang back gives the swap some depth and
-    /// keeps the eye on the screen that is arriving.
+    /// The arriving screen fades in while nudging over from the direction of
+    /// travel; the one leaving just fades.
     ///
-    /// No screen width arithmetic: the arriving screen's slide comes from
-    /// `.move`, and the departing one only scales and fades.
+    /// The nudge is a short fixed distance rather than a full width slide. A
+    /// full slide drags a whole screen of text across a second screen of text,
+    /// which reads as busy and leaves the two smeared together halfway through.
+    /// A few points is enough to say which way the flow went.
     private var transition: AnyTransition {
         guard !reduceMotion else { return .opacity }
+        let nudge = isMovingForward ? Space.l : -Space.l
         return .asymmetric(
-            insertion: .move(edge: isMovingForward ? .trailing : .leading),
-            removal: .scale(scale: 0.94).combined(with: .opacity)
+            insertion: .modifier(
+                active: NudgedScreen(offset: nudge),
+                identity: NudgedScreen(offset: 0)
+            ),
+            removal: .opacity
         )
     }
 
@@ -97,6 +101,18 @@ struct OnboardingFlowView: View {
                 isLeaving = false
             }
         }
+    }
+}
+
+/// The arriving half of the swap: a short sideways nudge plus a fade. The
+/// distance is a fixed, decorative one, not a share of the screen's width.
+private struct NudgedScreen: ViewModifier {
+    let offset: CGFloat
+
+    func body(content: Content) -> some View {
+        content
+            .opacity(offset == 0 ? 1 : 0)
+            .offset(x: offset)
     }
 }
 
