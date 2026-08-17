@@ -1,10 +1,17 @@
 import SwiftUI
 
-/// Top level view. Owns which flow the app is showing.
-/// Step 4 replaces the body with the onboarding / home switch.
+/// Top level view. Owns the dependencies and decides which flow is showing.
+/// Each flow draws its own ambient background. Step 7 adds the handoff from
+/// onboarding to home.
 struct RootView: View {
+    private let settings: SettingsStore
+
+    init(settings: SettingsStore = UserDefaultsSettingsStore()) {
+        self.settings = settings
+    }
+
     var body: some View {
-        AmbientBackground()
+        OnboardingFlowView(settings: settings)
     }
 }
 

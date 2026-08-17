@@ -2,7 +2,10 @@ import SwiftUI
 
 /// Every colour in the app. No view names a colour outside this file.
 enum Palette {
-    static let background = Color(hex: 0xF1EEFA)
+    /// The design spec lists #F1EEFA. The reference mockups measure #EAE5FA in
+    /// every flat area, and the mockups are what the app is judged against, so
+    /// the measured value is used.
+    static let background = Color(hex: 0xEAE5FA)
     static let surface = Color(hex: 0xFBFAFF)
     static let ink = Color(hex: 0x161327)
     static let accent = Color(hex: 0x6C5CE0)

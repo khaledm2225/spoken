@@ -1,58 +1,71 @@
 import SwiftUI
 
-/// The background behind every screen: a flat base with three soft colour orbs
+/// How strong the orbs are. The welcome screen's mockup carries much stronger
+/// colour than the screens after it, so there are two presets.
+///
+/// Values were fitted by sampling the reference mockups pixel by pixel, not
+/// taken from the written spec: the spec's 22 / 14 / 18 percent read far paler
+/// than the mockups, and the mockups are what the app is judged against.
+struct AmbientStyle: Equatable {
+    /// The accent glow is a tight core inside a wide soft halo.
+    var accentCore: Double
+    var accentHalo: Double
+    var pink: Double
+    var lavender: Double
+
+    /// Fitted to `on1.png`.
+    static let welcome = AmbientStyle(accentCore: 0.34, accentHalo: 0.16, pink: 0.60, lavender: 0.38)
+
+    /// Fitted to `on2.png`. Used from the second onboarding screen onward.
+    static let standard = AmbientStyle(accentCore: 0.10, accentHalo: 0.04, pink: 0.55, lavender: 0.20)
+}
+
+/// The background behind every screen: a flat base with soft colour glows
 /// drifting off the edges.
 ///
-/// The orbs are the fixed decorative geometry the layout rules allow a fixed
+/// The glows are the fixed decorative geometry the layout rules allow a fixed
 /// frame. They hold no text, so nothing here can clip or truncate, and placement
 /// is by alignment rather than measurement so it holds at any screen width.
 ///
 /// This is the only view in the app permitted to ignore safe areas.
 struct AmbientBackground: View {
+    var style: AmbientStyle = .standard
+
     var body: some View {
         Palette.background
-            .overlay(alignment: .topTrailing) { Self.topRight.view }
-            .overlay(alignment: .bottomLeading) { Self.bottomLeft.view }
-            .overlay(alignment: .leading) { Self.centreLeft.view }
+            .overlay(alignment: .topTrailing) {
+                glow(Palette.accent, opacity: style.accentHalo, width: 330, height: 330, blur: 70)
+                    .offset(x: 105, y: -75)
+            }
+            .overlay(alignment: .topTrailing) {
+                glow(Palette.accent, opacity: style.accentCore, width: 120, height: 120, blur: 30)
+                    .offset(x: -15, y: 9)
+            }
+            .overlay(alignment: .topLeading) {
+                // The mockup's pink glow is wider than it is tall.
+                glow(Palette.orbPink, opacity: style.pink, width: 300, height: 230, blur: 55)
+                    .offset(x: -140, y: 200)
+            }
+            .overlay(alignment: .bottomLeading) {
+                glow(Palette.orbLavender, opacity: style.lavender, width: 300, height: 300, blur: 50)
+                    .offset(x: -110, y: 20)
+            }
             .ignoresSafeArea()
             .accessibilityHidden(true)
     }
 
-    // Diameters are generous on purpose: a heavy blur eats the edges of a
-    // circle, so a small orb washes out to nothing. These sizes let each orb
-    // hold its stated opacity through the blur.
-    private static let topRight = Orb(
-        colour: Palette.accent, opacity: 0.12,
-        diameter: 460, blur: 90, offset: CGSize(width: 80, height: -120)
-    )
-
-    private static let bottomLeft = Orb(
-        colour: Palette.orbLavender, opacity: 0.18,
-        diameter: 520, blur: 100, offset: CGSize(width: -120, height: 140)
-    )
-
-    private static let centreLeft = Orb(
-        colour: Palette.orbPink, opacity: 0.14,
-        diameter: 440, blur: 110, offset: CGSize(width: -140, height: 0)
-    )
-
-    private struct Orb {
-        let colour: Color
-        let opacity: Double
-        let diameter: CGFloat
-        let blur: CGFloat
-        let offset: CGSize
-
-        var view: some View {
-            Circle()
-                .fill(colour.opacity(opacity))
-                .frame(width: diameter, height: diameter)
-                .blur(radius: blur)
-                .offset(x: offset.width, y: offset.height)
-        }
+    private func glow(_ colour: Color, opacity: Double, width: CGFloat, height: CGFloat, blur: CGFloat) -> some View {
+        Ellipse()
+            .fill(colour.opacity(opacity))
+            .frame(width: width, height: height)
+            .blur(radius: blur)
     }
 }
 
-#Preview {
+#Preview("Welcome") {
+    AmbientBackground(style: .welcome)
+}
+
+#Preview("Later screens") {
     AmbientBackground()
 }
