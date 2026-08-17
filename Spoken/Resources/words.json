@@ -1,0 +1,452 @@
+[
+  {
+    "id": "happy",
+    "text": "happy",
+    "pronunciation": "HAP-ee",
+    "partOfSpeech": "adjective",
+    "meaning": "feeling good and pleased",
+    "level": "newLearner",
+    "examples": {
+      "football": "The team was happy after the win.",
+      "movies": "The film has a happy ending.",
+      "money": "She was happy to save some money.",
+      "travel": "We felt happy on the long train ride.",
+      "food": "A warm meal makes me happy.",
+      "music": "This song always makes me happy.",
+      "games": "He was happy to win the game.",
+      "dailyLife": "A short walk makes her happy."
+    }
+  },
+  {
+    "id": "light",
+    "text": "light",
+    "pronunciation": "LYTE",
+    "partOfSpeech": "adjective",
+    "meaning": "not heavy",
+    "level": "newLearner",
+    "examples": {
+      "football": "He wore light boots for the match.",
+      "movies": "She carried a light bag to the cinema.",
+      "money": "His wallet felt light after shopping.",
+      "travel": "I pack a light bag for every trip.",
+      "food": "We ate a light meal before bed.",
+      "music": "The song has a light and easy sound.",
+      "games": "The new controller is very light.",
+      "dailyLife": "Her coat is light and warm."
+    }
+  },
+  {
+    "id": "begin",
+    "text": "begin",
+    "pronunciation": "bih-GIN",
+    "partOfSpeech": "verb",
+    "meaning": "to start something",
+    "level": "newLearner",
+    "examples": {
+      "football": "The match will begin at six.",
+      "movies": "The movie will begin in ten minutes.",
+      "money": "I want to begin saving money.",
+      "travel": "Our trip will begin on Friday.",
+      "food": "Let us begin with a small soup.",
+      "music": "The band will begin the show soon.",
+      "games": "Press start to begin the game.",
+      "dailyLife": "I begin my day with a glass of water."
+    }
+  },
+  {
+    "id": "kind",
+    "text": "kind",
+    "pronunciation": "KYND",
+    "partOfSpeech": "adjective",
+    "meaning": "caring about other people",
+    "level": "newLearner",
+    "examples": {
+      "football": "The player was kind to the young fans.",
+      "movies": "The main actor plays a kind man.",
+      "money": "It was kind of him to pay for lunch.",
+      "travel": "A kind driver showed us the way.",
+      "food": "Our neighbour is kind and brings us bread.",
+      "music": "The singer was kind to every fan.",
+      "games": "He is a kind player who helps beginners.",
+      "dailyLife": "A kind word can change someone's day."
+    }
+  },
+  {
+    "id": "quiet",
+    "text": "quiet",
+    "pronunciation": "KWY-uht",
+    "partOfSpeech": "adjective",
+    "meaning": "making little or no sound",
+    "level": "newLearner",
+    "examples": {
+      "football": "The crowd went quiet before the kick.",
+      "movies": "Please stay quiet during the film.",
+      "money": "He is quiet about how much he earns.",
+      "travel": "We found a quiet beach far from town.",
+      "food": "The cafe is quiet in the morning.",
+      "music": "The song starts quiet and grows loud.",
+      "games": "The room was quiet while we played.",
+      "dailyLife": "I like a quiet hour before bed."
+    }
+  },
+  {
+    "id": "fresh",
+    "text": "fresh",
+    "pronunciation": "FRESH",
+    "partOfSpeech": "adjective",
+    "meaning": "new and not old",
+    "level": "newLearner",
+    "examples": {
+      "football": "The team needs fresh legs in the second half.",
+      "movies": "The film brings a fresh idea to the screen.",
+      "money": "He started the month with a fresh plan for saving.",
+      "travel": "The mountain air felt fresh and clean.",
+      "food": "We buy fresh bread every morning.",
+      "music": "The band has a fresh new sound.",
+      "games": "A fresh update came out today.",
+      "dailyLife": "Open the window for fresh air."
+    }
+  },
+  {
+    "id": "ready",
+    "text": "ready",
+    "pronunciation": "RED-ee",
+    "partOfSpeech": "adjective",
+    "meaning": "prepared to do something",
+    "level": "newLearner",
+    "examples": {
+      "football": "The players are ready for the match.",
+      "movies": "Are you ready for the movie to start?",
+      "money": "Keep some money ready for small costs.",
+      "travel": "My bag is ready for the trip.",
+      "food": "Dinner is ready in five minutes.",
+      "music": "The band is ready to play.",
+      "games": "Everyone is ready to start the game.",
+      "dailyLife": "I am ready to leave the house."
+    }
+  },
+  {
+    "id": "clear",
+    "text": "clear",
+    "pronunciation": "KLEER",
+    "partOfSpeech": "adjective",
+    "meaning": "easy to see or understand",
+    "level": "newLearner",
+    "examples": {
+      "football": "The referee made a clear call.",
+      "movies": "The story of the film is very clear.",
+      "money": "She keeps a clear list of what she spends.",
+      "travel": "The sky was clear all week.",
+      "food": "The soup is light and clear.",
+      "music": "Her voice is clear and strong.",
+      "games": "The rules of the game are clear.",
+      "dailyLife": "He gave me clear directions to his home."
+    }
+  },
+  {
+    "id": "honest",
+    "text": "honest",
+    "pronunciation": "ON-ist",
+    "partOfSpeech": "adjective",
+    "meaning": "always telling the truth",
+    "level": "gettingBetter",
+    "examples": {
+      "football": "He is an honest player who admits his fouls.",
+      "movies": "The film gives an honest look at family life.",
+      "money": "She is honest about what she owes.",
+      "travel": "The guide gave us honest advice about the road.",
+      "food": "The cook was honest that the dish was too salty.",
+      "music": "His songs are honest and simple.",
+      "games": "An honest player never cheats.",
+      "dailyLife": "Be honest with your friends."
+    }
+  },
+  {
+    "id": "brave",
+    "text": "brave",
+    "pronunciation": "BRAYV",
+    "partOfSpeech": "adjective",
+    "meaning": "not afraid of hard things",
+    "level": "gettingBetter",
+    "examples": {
+      "football": "The brave player stayed calm.",
+      "movies": "The brave hero saves the town.",
+      "money": "It was brave of her to start a business.",
+      "travel": "A brave traveller crossed the desert alone.",
+      "food": "He was brave enough to try the hot pepper.",
+      "music": "She was brave to sing in front of the crowd.",
+      "games": "A brave move won him the match.",
+      "dailyLife": "It is brave to ask for help."
+    }
+  },
+  {
+    "id": "wonder",
+    "text": "wonder",
+    "pronunciation": "WUN-der",
+    "partOfSpeech": "verb",
+    "meaning": "to think about something you want to know",
+    "level": "gettingBetter",
+    "examples": {
+      "football": "I wonder who will score first.",
+      "movies": "I wonder how the film ends.",
+      "money": "She began to wonder where her money went.",
+      "travel": "We wonder what the next city looks like.",
+      "food": "I wonder what is in this sauce.",
+      "music": "I wonder who wrote this song.",
+      "games": "He began to wonder if he could win.",
+      "dailyLife": "I wonder if it will rain today."
+    }
+  },
+  {
+    "id": "patient",
+    "text": "patient",
+    "pronunciation": "PAY-shunt",
+    "partOfSpeech": "adjective",
+    "meaning": "able to wait without getting upset",
+    "level": "gettingBetter",
+    "examples": {
+      "football": "A patient team waits for the right pass.",
+      "movies": "Be patient, the best part comes later.",
+      "money": "A patient saver builds real savings.",
+      "travel": "You must be patient at the airport.",
+      "food": "Good bread needs a patient baker.",
+      "music": "A patient player learns the song note by note.",
+      "games": "Patient players win the long games.",
+      "dailyLife": "She is patient with her small children."
+    }
+  },
+  {
+    "id": "gentle",
+    "text": "gentle",
+    "pronunciation": "JEN-tul",
+    "partOfSpeech": "adjective",
+    "meaning": "soft and careful",
+    "level": "gettingBetter",
+    "examples": {
+      "football": "He gave the ball a gentle touch.",
+      "movies": "The film has a gentle and slow story.",
+      "money": "He gave me a gentle reminder to pay.",
+      "travel": "A gentle wind pushed the small boat.",
+      "food": "Cook the eggs on a gentle heat.",
+      "music": "The song has a gentle sound.",
+      "games": "Use a gentle press on the button.",
+      "dailyLife": "She has a gentle voice."
+    }
+  },
+  {
+    "id": "steady",
+    "text": "steady",
+    "pronunciation": "STED-ee",
+    "partOfSpeech": "adjective",
+    "meaning": "not changing and not shaking",
+    "level": "gettingBetter",
+    "examples": {
+      "football": "The keeper kept a steady hand.",
+      "movies": "The camera stayed steady in the long scene.",
+      "money": "He has a steady job and a steady wage.",
+      "travel": "The train moved at a steady speed.",
+      "food": "Keep a steady heat under the pan.",
+      "music": "The drummer keeps a steady beat.",
+      "games": "A steady hand helps in this game.",
+      "dailyLife": "Small steady habits make big change."
+    }
+  },
+  {
+    "id": "curious",
+    "text": "curious",
+    "pronunciation": "KYOOR-ee-us",
+    "partOfSpeech": "adjective",
+    "meaning": "wanting to know more",
+    "level": "gettingBetter",
+    "examples": {
+      "football": "Fans are curious about the new coach.",
+      "movies": "I am curious about the end of the film.",
+      "money": "He is curious about how banks work.",
+      "travel": "Curious travellers ask a lot of questions.",
+      "food": "She is curious about food from other countries.",
+      "music": "He is curious about old records.",
+      "games": "Curious players find the hidden rooms.",
+      "dailyLife": "Children are curious about everything."
+    }
+  },
+  {
+    "id": "humble",
+    "text": "humble",
+    "pronunciation": "HUM-bul",
+    "partOfSpeech": "adjective",
+    "meaning": "not proud and not showing off",
+    "level": "gettingBetter",
+    "examples": {
+      "football": "The star stayed humble after the win.",
+      "movies": "The actor is humble about her awards.",
+      "money": "He is humble about how much he earns.",
+      "travel": "We stayed in a humble little room.",
+      "food": "A humble bowl of rice can be perfect.",
+      "music": "The singer is humble and quiet off stage.",
+      "games": "A humble winner shakes hands.",
+      "dailyLife": "He lives a humble and simple life."
+    }
+  },
+  {
+    "id": "eager",
+    "text": "eager",
+    "pronunciation": "EE-ger",
+    "partOfSpeech": "adjective",
+    "meaning": "wanting to do something very much",
+    "level": "gettingBetter",
+    "examples": {
+      "football": "The young player is eager to start.",
+      "movies": "Fans are eager to see the new film.",
+      "money": "She is eager to save for a house.",
+      "travel": "We are eager to see the sea.",
+      "food": "The children were eager to taste the cake.",
+      "music": "The band is eager to play live again.",
+      "games": "He is eager to try the new game.",
+      "dailyLife": "I am eager to learn something new."
+    }
+  },
+  {
+    "id": "vivid",
+    "text": "vivid",
+    "pronunciation": "VIV-id",
+    "partOfSpeech": "adjective",
+    "meaning": "very bright and clear in the mind",
+    "level": "confident",
+    "examples": {
+      "football": "I have a vivid memory of that goal.",
+      "movies": "The film uses vivid colours.",
+      "money": "She painted a vivid picture of life without debt.",
+      "travel": "The market was full of vivid colours.",
+      "food": "The salad had vivid green leaves.",
+      "music": "The song paints a vivid scene.",
+      "games": "The game has vivid and colourful worlds.",
+      "dailyLife": "I had a vivid dream last night."
+    }
+  },
+  {
+    "id": "subtle",
+    "text": "subtle",
+    "pronunciation": "SUT-ul",
+    "partOfSpeech": "adjective",
+    "meaning": "small and not easy to notice",
+    "level": "confident",
+    "examples": {
+      "football": "He made a subtle move past the defender.",
+      "movies": "The acting was quiet and subtle.",
+      "money": "There was a subtle change in the price.",
+      "travel": "The old city has a subtle charm.",
+      "food": "The sauce has a subtle taste of lemon.",
+      "music": "The song has subtle changes in the beat.",
+      "games": "The clue was subtle and easy to miss.",
+      "dailyLife": "She gave a subtle smile."
+    }
+  },
+  {
+    "id": "keen",
+    "text": "keen",
+    "pronunciation": "KEEN",
+    "partOfSpeech": "adjective",
+    "meaning": "very interested, or very sharp",
+    "level": "confident",
+    "examples": {
+      "football": "He is keen to join the first team.",
+      "movies": "She is a keen fan of old films.",
+      "money": "He has a keen eye for a good deal.",
+      "travel": "They are keen to see the whole country.",
+      "food": "She has a keen sense of taste.",
+      "music": "He is keen to learn the guitar.",
+      "games": "A keen player spots the pattern fast.",
+      "dailyLife": "I am keen to start early."
+    }
+  },
+  {
+    "id": "candid",
+    "text": "candid",
+    "pronunciation": "KAN-did",
+    "partOfSpeech": "adjective",
+    "meaning": "open and honest, even when it is hard",
+    "level": "confident",
+    "examples": {
+      "football": "The coach was candid about the loss.",
+      "movies": "The actor gave a candid interview.",
+      "money": "She was candid about her debt.",
+      "travel": "The guide was candid about the risks.",
+      "food": "He was candid about not liking the dish.",
+      "music": "The singer is candid in her songs.",
+      "games": "He was candid about his mistakes.",
+      "dailyLife": "A candid talk cleared the air."
+    }
+  },
+  {
+    "id": "prudent",
+    "text": "prudent",
+    "pronunciation": "PROO-dunt",
+    "partOfSpeech": "adjective",
+    "meaning": "careful and thinking ahead",
+    "level": "confident",
+    "examples": {
+      "football": "It was prudent to rest the injured player.",
+      "movies": "The studio made a prudent choice.",
+      "money": "A prudent saver keeps some cash aside.",
+      "travel": "It is prudent to book early.",
+      "food": "It is prudent to check the date on the milk.",
+      "music": "The band made a prudent plan for the tour.",
+      "games": "A prudent player saves the game often.",
+      "dailyLife": "Prudent people plan for hard days."
+    }
+  },
+  {
+    "id": "astute",
+    "text": "astute",
+    "pronunciation": "uh-STOOT",
+    "partOfSpeech": "adjective",
+    "meaning": "quick to see and understand things",
+    "level": "confident",
+    "examples": {
+      "football": "The coach made an astute change at half time.",
+      "movies": "The film takes an astute look at power.",
+      "money": "An astute buyer waits for the right price.",
+      "travel": "An astute traveller books the quiet season.",
+      "food": "The chef made an astute choice of spice.",
+      "music": "The producer has an astute ear.",
+      "games": "An astute player reads the board fast.",
+      "dailyLife": "She is astute about people."
+    }
+  },
+  {
+    "id": "earnest",
+    "text": "earnest",
+    "pronunciation": "UR-nist",
+    "partOfSpeech": "adjective",
+    "meaning": "serious and full of real feeling",
+    "level": "confident",
+    "examples": {
+      "football": "He made an earnest effort all match.",
+      "movies": "The film is earnest and warm.",
+      "money": "He made an earnest plan to clear his debt.",
+      "travel": "She had an earnest wish to see the world.",
+      "food": "The cook made an earnest try at the old recipe.",
+      "music": "His songs are earnest and honest.",
+      "games": "He made an earnest attempt to win.",
+      "dailyLife": "She is earnest about her studies."
+    }
+  },
+  {
+    "id": "resolute",
+    "text": "resolute",
+    "pronunciation": "REZ-uh-loot",
+    "partOfSpeech": "adjective",
+    "meaning": "firm and not ready to give up",
+    "level": "confident",
+    "examples": {
+      "football": "The defence stayed resolute to the end.",
+      "movies": "The hero is resolute in the face of danger.",
+      "money": "She was resolute about paying off the loan.",
+      "travel": "He was resolute about finishing the long walk.",
+      "food": "She was resolute about eating better.",
+      "music": "The band was resolute after the bad review.",
+      "games": "He stayed resolute after losing twice.",
+      "dailyLife": "Be resolute about your goals."
+    }
+  }
+]
