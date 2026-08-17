@@ -7,6 +7,11 @@ import SwiftUI
 /// so the cluster keeps its shape instead of reflowing at accessibility sizes.
 /// Every movement is on the Y axis only, and all of it stops under Reduce Motion.
 struct WelcomeHero: View {
+    /// The idle drift runs while the screen is settled. It is paused while the
+    /// screen slides away, because a child that keeps animating on its own
+    /// clock ignores the slide and jumps.
+    var isDrifting = true
+
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var hasAppeared = false
 
@@ -62,7 +67,7 @@ struct WelcomeHero: View {
         .padding(.horizontal, Space.xxl)
         .padding(.vertical, Space.xxl + Space.xs)
         .floatingGlass(style: .card)
-        .drifting(by: 4, delay: 0, appeared: hasAppeared, reduceMotion: reduceMotion)
+        .drifting(by: 4, delay: 0, appeared: hasAppeared, isStill: reduceMotion || !isDrifting)
     }
 
     private func chipView(_ chip: Chip) -> some View {
@@ -73,26 +78,27 @@ struct WelcomeHero: View {
             .floatingGlass(cornerRadius: Radius.chip)
             .rotationEffect(.degrees(chip.tilt))
             .offset(chip.place)
-            .drifting(by: chip.drift, delay: chip.delay, appeared: hasAppeared, reduceMotion: reduceMotion)
+            .drifting(by: chip.drift, delay: chip.delay, appeared: hasAppeared, isStill: reduceMotion || !isDrifting)
     }
 }
 
 private extension View {
     /// Fades and lifts the view in, then drifts it slowly up and down forever.
-    /// Both parts are dropped entirely under Reduce Motion.
+    /// `isStill` drops the drift: under Reduce Motion, and while the screen is
+    /// on its way out.
     @ViewBuilder
-    func drifting(by amount: CGFloat, delay: Double, appeared: Bool, reduceMotion: Bool) -> some View {
+    func drifting(by amount: CGFloat, delay: Double, appeared: Bool, isStill: Bool) -> some View {
         let entered = opacity(appeared ? 1 : 0)
             .offset(y: appeared ? 0 : Space.m)
-            .animation(reduceMotion ? nil : .spring(duration: 0.5).delay(delay), value: appeared)
+            .animation(isStill ? nil : Motion.push.delay(delay), value: appeared)
 
-        if reduceMotion {
+        if isStill {
             entered
         } else {
             PhaseAnimator([false, true]) { isUp in
                 entered.offset(y: isUp ? amount : -amount)
             } animation: { _ in
-                .easeInOut(duration: 3.2)
+                Motion.drift
             }
         }
     }

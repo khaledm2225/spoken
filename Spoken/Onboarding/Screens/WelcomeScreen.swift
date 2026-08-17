@@ -2,9 +2,12 @@ import SwiftUI
 
 /// Onboarding screen one: what the app is, in two lines.
 struct WelcomeScreen: View {
+    /// Passed down to the hero: the drift pauses while the screen slides away.
+    var isSettled = true
+
     var body: some View {
         VStack(alignment: .leading, spacing: Space.xl) {
-            WelcomeHero()
+            WelcomeHero(isDrifting: isSettled)
                 .frame(maxWidth: .infinity)
                 .padding(.top, Space.xxl)
                 .padding(.bottom, Space.xl)
@@ -24,6 +27,8 @@ struct WelcomeScreen: View {
                     .uiText(17)
                     .foregroundStyle(Palette.muted)
             }
+            // Arrives after the hero cluster has settled.
+            .reveal(index: 5)
         }
     }
 }
