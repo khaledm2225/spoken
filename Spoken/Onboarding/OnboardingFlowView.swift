@@ -47,8 +47,10 @@ struct OnboardingFlowView: View {
             WelcomeScreen(isSettled: !isLeaving)
         case .level:
             LevelScreen(selection: $model.level)
-        case .interests, .dailyGoal:
-            // Built in steps 6 and 7.
+        case .interests:
+            InterestsScreen(selection: $model.interests)
+        case .dailyGoal:
+            // Built in step 7.
             Color.clear
         }
     }
